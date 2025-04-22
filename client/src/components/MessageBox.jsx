@@ -48,7 +48,7 @@ export default function MessageBox() {
             <div>
                 <ul>
                     {allMessages.map((Message) => {
-                        return <li key={Message.id}>{Message.Message}</li>
+                        return <li key={Message.id}>{Message.username} <br />{Message.Message}</li>
                     })}
                 </ul>
             </div>

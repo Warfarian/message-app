@@ -1,13 +1,21 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import UsernameForm from './components/UsernameForm';
 import MessageBox from './components/MessageBox';
+import { useState } from 'react';
+import './App.css'
 
-function App() {
+export default function App() {
+  const [username, setUsername] = useState('');
+
   return (
-    <>
-      <h2>Message your peeps here </h2>
-      <MessageBox />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<UsernameForm setUsername={setUsername} />} />
+        <Route 
+          path="/chat" 
+          element={username ? <MessageBox username={username} /> : <Navigate to="/" />} 
+        />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
